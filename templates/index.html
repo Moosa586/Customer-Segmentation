@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Segmentation</title>
+    <style>
+        /* Body and container styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f8ff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 60%;
+            margin: 50px auto;
+            text-align: center;
+        }
+
+        /* Header styling */
+        header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Footer styling */
+        footer {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            font-size: 14px;
+        }
+
+        /* Form styling */
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="file"], select {
+            padding: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #007bff;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Result section */
+        .result {
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #28a745;
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        img {
+            width: 100%;
+            max-width: 600px;
+            margin-top: 20px;
+            border: 2px solid #007bff;
+            border-radius: 10px;
+        }
+
+        /* Media queries for responsiveness */
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            header {
+                font-size: 20px;
+            }
+
+            footer {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head> <!-- Header -->
+<header>
+    Customer Segmentation Tool
+</header>
+
+<!-- Main container -->
+<div class="container">
+    <h1>Upload Your Data for Segmentation</h1>
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <label for="file">Choose a CSV File</label>
+        <input type="file" id="file" name="file" required>
+
+        <label for="model">Select Clustering Model</label>
+        <select id="model" name="model" required>
+            <option value="kmeans">K-Means</option>
+        </select>
+
+        <button type="submit">Run Segmentation</button>
+    </form>
+
+    <!-- Result display -->
+    {% if segments %}
+    <div class="result">
+        <h3>Number of Clusters: {{ segments }}</h3>
+        <img src="{{ plot_url }}" alt="Cluster Plot">
+    </div>
+    {% endif %}
+</div>
+
+<!-- Footer -->
+<footer>
+    © 2024 Customer Segmentation  | Designed by Muhammad Moosa
+</footer>
+
+</body>
+</html>
+</html>
